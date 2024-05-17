@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Loader, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 const SignUpPage = () => {
     const [username, setUsername] = useState("");
@@ -121,11 +121,11 @@ const SignUpPage = () => {
                     </FormControl>
                     {isCheckingUsername && <Loader2 className="animate-spin"/>}
                     <p className={`text-sm ${
-                        usernameMessage === "Username is unique"
+                        usernameMessage === "Username is available"
                         ? 'text-green-500'
                         : 'text-red-500'
                     }`}>
-                        test {usernameMessage}
+                        {usernameMessage}
                     </p>
                     <FormMessage />
                     </FormItem>
