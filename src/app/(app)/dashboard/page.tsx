@@ -35,7 +35,6 @@ const DashboardPage = () => {
     })
 
     const { register, watch, setValue } = form;
-    
     const acceptMessages = watch('acceptMessages');
 
     const fetchAcceptMessage = useCallback(async () => {
@@ -56,7 +55,7 @@ const DashboardPage = () => {
         } finally {
             setIsSwitchLoading(false);
         }
-    }, [setValue])
+    }, [setValue, toast])
 
     const fetchMessages = useCallback(async (refresh: boolean = false) => {
         setIsLoading(true);
@@ -82,10 +81,11 @@ const DashboardPage = () => {
             setIsLoading(false)
             setIsSwitchLoading(false);
         }
-    }, [setIsLoading, setMessages])
+    }, [setIsLoading, setMessages, toast])
 
     useEffect(() => {
         if(!session || !session.user) return;
+        
         fetchMessages();
         fetchAcceptMessage();
     }, [session, setValue, fetchAcceptMessage, fetchMessages])
